@@ -1,0 +1,22 @@
+(Given 90 minutes to solve)
+
+Requirement
+
+We are in a Star Wars Celebration in 2015, a number of fans are arguing in how many of the films Yoga appeared.
+Your job is, given a character name return the number of films where that character appeared.
+To do so, you will be using the Swapi API, which documentation can be found here: https://challenges.hackajob.co/swapi/documentation, which enpoint is: https://challenges.hackajob.co/swapi/api/.
+
+
+INPUT
+string    character
+
+
+OUTPUT 
+int    numberOfFilms
+
+
+EXAMPLE 
+Input 
+"Luke Skywalker" 
+Output 
+5
