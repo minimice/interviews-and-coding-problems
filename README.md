@@ -1,2 +1,2 @@
 # coding-problems
-Coding problems, encountered and solved.  More solved at http://hackerrank.com/minimice
+Coding problems which I have solved encountered during interviews and other random places.  More solved at http://hackerrank.com/minimice
