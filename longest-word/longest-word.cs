@@ -1,6 +1,6 @@
 // I had to solve this in an hour with a badly formatted code sample that was given below
 // Pretty much the only function I wrote was getWordsThatMatchAllLetters
-// Everything else was copied and pasted from the ones who interviewd me
+// Everything else was copied and pasted from the ones who interviewed me
 // Like lowerCasing function names, using a mix of var and string, this code could be much better!
 
 /* 
