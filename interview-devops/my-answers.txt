@@ -1,0 +1,124 @@
+Answers by Chooi-Guan Lim
+https://linkedin.com/in/cgl88
+
+1.	Describe / design the perfect automation pipeline using Jenkins
+
+In my opinion (because there is no "perfect pipeline" :)), the perfect automation pipeline would comprise of the following environments, typically DEV, TEST and PRODUCTION at minimum.  Deployment will flow from DEV to TEST and then to PRODUCTION, assuming all stages within each environment pass.  Each environment has the same deployment template, e.g. network, storage, cluster deployment, and only differ in configuration (e.g. 2 availability zones in PRODUCTION vs 1 in DEV).  This follows the idea of host parity as best practise in DevOps.
+
+I will go through the process from the example of a software engineer, John.  John has a feature to deploy which involves adding a new authentication service.  He has created his own branch on the repository in github, e.g. JIRA-1234/authentication where JIRA-1234 is the issue number.  I will also assume the project is adopting microservice architecture, which means the project is typically containerized running Docker (which again provides a consistent environment, leading to host parity, leading to easier testing and consistent deployment).  Before pushing to DEV, John also runs unit tests, integration tests and other appropriate tests and ensures that all of them pass on his local machine running Docker.
+
+Once he pushes to DEV, within the DEV environment, there will be several stages as described below.
+
+Pull from the branch
+- Pulling from an SCM (typically Git, Subversion, Perforce, etc.) with the latest code changes on the branch.  In this case, it's JIRA-1234/authentication.
+
+Building the branch
+- Code is now built using the Docker file to create the container image and pushed to an image repository e.g. docker hub.
+
+Running Unit Tests
+- Unit tests are performed against the container image and should pass.  This can be done using a testing framework, e.g. nUnit, xUnit, jUnit, etc.  If they fail, deployment to TEST will halt.  There should be a message describing why the test failed, and which test failed.  This can be viewed in the console, or the person who commited the code should be notified automatically that their code deploy failed and they should fix it.
+
+Running Integration Tests
+- Unit tests are performed against the container image and should pass.  If they fail, deployment to TEST will halt.  Like running unit tests, there should be a message descring why the test failed, and the committer should be notified.  The integration test environment can be spun up with docker-compose.
+
+Running any other appropriate tests
+- This can include click tests (e.g. using headless Selenium) or other UAT tests.
+
+Deploying the branch 
+- The branch will now be deployed.  If within a containerised environment this can be done using ECS/Kubernetes on AWS.  John is then notified that his deployment on DEV is successful and he is able to do additional testing for his feature on the branch (which is isolated) but still in an almost production like environment.  The deployment is done as a stack, i.e. an atomic unit containing all necessary requirements (this can be achieved using stacks in AWS Cloudformation) and with a configuration template for the DEV environment.
+
+Merging the branch to master
+- Once John and other stakeholders are satisfied, this typically involves a merge request with other developers, then a merge is performed.  The entire process above is then repeated, but this time deployment continues to TEST and PROD as well.
+
+Within the TEST environment, the stage is described as below.
+
+Deploying master branch to TEST
+- The branch will be deployed using the *same* container image as created from the master branch.  The service is now deployed as a stack as well but this time with a configuration template for the TEST environment.
+
+Testing can now take place for early users of the service before production release.
+
+Deploying master branch to PROD
+- Once all stakeholders have signed off, this can include the product owner and other early users, then then TEST can be promoted to PROD.  The service is now deployed as a stack as well but this time with a configuration template for the PROD environment.
+
+Once PROD is deployed, there has to be monitoring in place to ensure the service is up and running as according to SLAs.  Monitoring ideally should be in place for all environments where end users are concerned.  This is to lower risk (early detection leads to cheaper fixes) and to ensure business continuity.  In AWS this can be achieved using Elastic Stack for dashboard monitoring and/or cloudwatch alarms.  It would also be beneficial if the system self healed itself, for example if CPU usage was too high an alert should be triggered to spin up an additional EC2 instance during peak hours and then again spin down the instance when usage is low.  This makes the system more proactive rather than reactive.  Additionally these metrics can be gathered to build a future AI/NoOps algorithm. :)  This would then allow a platform for toggling features on or off on a per user basis leading to improved user experience, because not all features are used by every user and all users are different, even if slightly.
+
+
+2.	Create a sample IaaC template using Terraform to provision a single server in availability zone a, with a 20gb operating system volume, and a 100g locally attached data volume. The server will be used to calculate complex equations.
+
+Root module for this is available at
+https://github.com/minimice/interviews-and-coding-problems/tree/master/interview-devops/terraform-devops
+
+3.	Using ansible, create a sample playbook to install Oracle Java onto a Linux host
+
+--- Sample playbook as follows ---
+
+---
+- hosts: linuxmachines
+  remote_user: root
+  tasks:
+  - name: Install Java JDK (includes JRE)
+    yum:
+      name: java-1.8.0-openjdk
+      state: latest
+
+
+After executing the above playbook, verify it has installed by running
+
+java -version
+
+4.	In Unix, how do you find which process is using a file?
+
+Use
+fuser name_of_file
+e.g.
+fuser my-answers.txt
+
+
+5.	How would you run a SQL command in your script? Provide a sample script.
+
+Assuming using MySQL, then you can run
+
+mysql -u USER -pPASSWORD -D DATABASE -e "SQL_QUERY"
+
+for example to select all rows from table "users" using database "shoppers" using user "admin" and password "p4sSw0rd0!", it would be
+
+mysql - u admin -pp4sSw0rd0! -D shoppers -e "select * from users where 0=0"
+
+6.	How would you go about showing non-printable characters in a text file?
+
+Use
+sed -n 'l' name_of_file
+e.g.
+sed -n 'l' my-answers.txt
+
+
+7.	Name five important DevOps tools that organizations should consider adopting when undergoing a DevOps transition.
+
+For SCM - Github/Gitlab/Perforce/Bitbucket
+For CI - TeamCity/Gitlab-CI/Jenkins
+For CD - Gitlab-CI/Jenkins/Octopus Deploy
+For Configuration Management - Puppet/Terraform/Cloudformation
+For Monitoring - Elastic Stack/Cloudwatch/DataDog
+
+
+
+8.	What does it mean to shift left in DevOps?
+
+To shift left means to involve operations personnel early in the process, getting them involved in the application build and deployment from the beginning of the application lifecycle, i.e. involving them in the software development process.  By getting them involved early it allows operations to gain knowledge into the requirements of the software so they can be more effective.  It also allows them more insight into testing and quality assurance, e.g. see the running unit tests and integration tests stages which I mentioned in the answer to question 1.
+
+
+
+9.	What are the prerequisites for the implementation of DevOps?
+
+Culture is the most important, people have to work together, developers and operations.  The goals of the business must be understood.  Processes and stakeholders have to be defined.  There must be some sort of measurement in place when production is concerned, this improvement upon existing processes, e.g. build time, time to deploy, etc.
+Tools need not necessarily be in place but they accelerate adoption of DevOps.
+
+
+10.	What are the fundamental differences between DevOps & Agile?
+
+Agile can contribute to DevOps by providing quick iterative cycles so that teams can learn and deploy faster, and is concerned with the end to end engineering process.  Agile is more concerned about handling with change, and can be adopted within different frameworks like scrum.
+Typically devOps teams are larger than agile, agile teams are smaller in size.
+DevOps is more of a culture and mindset rather than practise.
+Agile is concerned with releases and sprints.  DevOps we're measuring time for deployments.
+Agile is concerned with software delivery.  DevOps is more of end to end and fast delivery as well as monitoring.
+When agile is concerned feedback comes from customers, feedback for DevOps is more internally focused.
