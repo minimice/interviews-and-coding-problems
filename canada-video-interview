@@ -1,0 +1,68 @@
+What changes in technology do you anticipate that may effect projects you are currently or have worked on? How do you keep up to date with current trends?
+
+
+The changes in technology that I anticipate that may effect projects include 
+- the way software is developed. A lot of enterprise products are now moving to the cloud.  This involves not only a technological change but a shift in methodology.  So you're going from a monolithic architecture to a microservice architecture.  There are 5 main areas which you need to focus on as an aws architect and that is the areas of security, cost, reliability, operational readiness and performance... elaborate.
+- keeping up to date, I subscribe to cloud reports.  I participate in tech meetups, so for example the aws loft meetup in stockholm, I sign up for courses on coursera, edx, pluralsight, linux academy.  I go to conferences, so I've been to at least two aws conference, cncf conference and of course general knowledge sharing in the team.
+
+In your experience, what can you do to make a team functionally successful?
+
+Right so a team needs to work together.  This means no silos and everyone needs to work with at least one other person.  For me what has worked before was knowledge sharing and working together to solve problems.  I have practised something called mob programming.
+Explain.
+This is efficient because everyone learns, everyone contributes, everyone has a say, and it also multiplies the bus factor.
+
+What are the advantages of infrastructure as code? What are the disadvantages?
+
+advantages
+- easily replicable environments.  Able to deploy different environments in a matter of seconds.  Developers are able to test and deploy in a live environment.
+- able to see code changes. If you submit your template to git or any scm, you'll be able to see how your architecture has evolved.
+- security compliance.
+
+disadvantages
+- verbose. takes a while to read and understand.
+- can be extremely complicated.  For example in your iac code you can call custom resources, and import values from different stacks.
+- customised according to each cloud provider.  Might have to rewrite templates according to different providers.
+- configuration drift.
+- learning curve.  You need to understand the syntax and what it does.  There's also a lifecycle to deploying stack.
+
+
+Describe your experience with the cloud? Have your worked with it before? If so, what specifically did you do in that environment?
+
+Yes I work with the cloud and have been for the last 4 years.  I was the aws architect in etisalat uae and team cloud lead in scania sweden.  Also aws certified solution architect associate.  I did a lot of mentoring where I served as the cloud expert, building pipelines, migrating pipelines from on prem to aws, migrating an onprem applications to cloud, containerisation is a big thing.  I deployed the entire infrastructure.
+- dns *route 53*
+- front end *cdn cloudfront*
+- backend services *ecs cluster*
+- database *aurora*
+all of this was set up using infrastructure as code.  One template was used to deploy to different environments, dev, test and prod.
+
+in team ecis, I did all of the containerisation work, setting up infrastructure and fixing their pipelines.  example... mapservice
+
+
+Describe a generic setup for operations using a version control, continuous integration, continuous testing, configuration management, deployment management, continuous monitoring, and containerization and how these different pieces interact. Feel free to do this using a tech stack that you have previous experience with.
+
+- version control - gitlab, where your source code lies and lives.
+- continuous integration - a development practice where developers integrate code into a shared repository and for this you can also use gitlab
+- continuous testing - gitlab, ensure code maintains some quality standards through automated tests
+- configuration management - chef, aws cloudformation, aws config, ensure that your software can be run reliably and to do that you need to automate everything.  And to do that you need to able to trace changes made.
+- deployment management - gitlab, plan schedule and control releases (pipeline)
+- continuous monitoring - elk stack, set alarms and have those sent to slack
+- containerisation - docker
+
+Do you use code from other developers? Specifically, other developers on open source websites or other code sharing resources. Why or why not?
+
+Yes, it's always a good idea to re-use code from other developers especially if it's open source.
+If a lot of devs are working on it you know it has some quality in it.  Kubernetes the orchestration container platform is an open source project and now commonly used.  Docker was also built on open source technology.  Netflix has the hystrix library which has many useful functions built in like when you connecting to a database you need retry mechanisms, exponential backoff, circuit breakers, these are best practises and will have to be implemented by yourself if you are writing from scratch.  Also localstack is another useful product which you can use for testing fake aws components locally.
+But on the other hand if the library you use isn't complaint according to your local IT standards.
+
+Please describe your experience with Linux and or Unix.
+
+I have plenty of experience with linux.  I use a mac, which is linux based.  When we deploy in aws it's all linux.   Gitlab pipelines are also all linux.  Writing scripts to deploy services, all in linux, so writing bash scripts.  Troubleshooting is also all in linux.  Explain cisco experience also.
+
+
+
+
+When we are presenting your profile to a company, there is often little time that occurs before a decision is made. What achievements or qualifications do you have that makes you unique and attractive when applying for a devops engineer position?
+
+I have worked as a devops engineer before, but not only with one team but I've worked with multiple teams and different people across countries.  I've worked in Singapore, Australia, Norway, Sweden and the UAE.  And I am probably the only engineer who can say that.
+I also hold an executive mba.
+But more importantly, I am a learner.  I'm continously learning from my mistakes.  So whether it's devops or software architecture or software engineering or mentoring, I have a pretty good grasp on the technological side of things.  I know how software should be deployed.  I understand the business side of things, so things like operational readiness.  I've also sold software to companies as a teenager so I understand how important really every aspect is.  So I can say I really see the big picture not just as devops engineer.
