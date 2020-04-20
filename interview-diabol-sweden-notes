@@ -1,0 +1,93 @@
+== 2nd interview ===
+patrik founder, 2003.
+- started as java developer, in dev and operations.
+
+
+
+- biggest challenges right now
+growth.. hiring.. business side of things
+customer side... don't want to single point of failure.
+hard to get people on board.
+
+- a few things one can perform in this role to deliver the biggest impact in the next 3 months
+.. listen and hear pain points
+.. lowest fruit first with biggest impact
+ .. slow builds for example
+ .. see if you can visualise something.. versions of diff systems
+
+- nau, jira confluence bitbucket sonar nexus kube k8
+setting up such a toolset
+running it for a few clients
+showing off metrics, team's better view of progress
+teach people around.. what good can look like
+
+
+
+
+
+== 1st interview ===
+team consultant managers and an owner
+- founded 2003, java consulting beginnings, based in stockholm, question ways of working in projects.. soft ways of working, re-branded as devops and continuous delivery, first project was with unibet...? proposed project towards cd and devops. today 20 people. partnership with aws, but work with google cloud as well.  joined 2007. client is ...?
+
+Minimum of 3 years of industry experience within software development or operations
+- 15 years experience in software engineering, last 3+ years focusing on cloud and devops
+
+
+Knowledge of a contemporary programming language (such as Java, C#, Python or Go)
+- Worked in C#, Java, javascript and python 
+
+knowledge of a scripting language (such as Bash, Groovy, Python, or Ruby)
+- yes
+
+knowledge of infrastructure automation tools (such as Terraform, Ansible or SaltStack)
+- terraform, and cloudformation
+
+knowledge of a major build tool (such as Maven, NPM, Gradle or Make)
+- npm, maven
+
+Experience with monitoring tools, logging infrastructure and tracing frameworks
+- elasticsearch, cloudwatch monitoring
+
+Experience with container technologies (such as Docker, Kubernetes or Mesos)
+- Docker mainly and amazon ecs
+
+A solid understanding of Lean and Agile software development methodologies
+- yes, was scrum master
+
+
+Professional working proficiency in English
+It would also be a plus if you have experience: 
+
+Working as a consultant
+- yes
+
+Coaching and leading people
+- yes, team cloud lead and mentor, tdd, cloud, etc.
+
+Implementing Continuous Delivery and/or DevOps
+- yes to both
+
+With any of the major cloud providers (AWS, Azure or Google Cloud Platform)
+- aws
+
+With Extreme Programming (XP)
+- some
+
+With Linux system administration
+- not really
+
+
+
+
+- biggest challenges right now
+-- find people, want to grow, talking to larger clients, strategic level, trying to cover a lot of ground.. need to be more.
+-- work at client is challenging.  companies have issues scaling because of the pace.
+
+- a few things one can perform in this role to deliver the biggest impact in the next 3 months
+-- experience, expect share knowledge - 4 diff levels, junior mid senior lead, presentations, demos... finding the right assignment. help with managed services. deliver value at client. bunch of tech people really.
+
+
+- anyone building tools in-house to standardise pipelines, can you tell me about your pipelines as a service service?
+outcome of customer project
+-- stemmed from electrolux... Iot efforts, cloud native from start...
+nau -> now, in-house team.. now it's in gke. 2nd call centre company, most in manila.
